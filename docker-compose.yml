@@ -9,21 +9,7 @@ services:
     - "1935:1935/tcp"
     - "3333:3333/tcp"
     - "3478:3478/tcp"
-    - "8080:8080/tcp"
-    - "9000:9000/tcp"
-    - "9999:9999/udp"
-    - "4000-4005:4000-4005/udp"
     - "10006-10010:10006-10010/udp"
-    environment:
-    - OME_ORIGIN_PORT=9000
-    - OME_RTMP_PROV_PORT=1935
-    - OME_SRT_PROV_PORT=9999
-    - OME_MPEGTS_PROV_PORT=4000-4005/udp
-    - OME_HLS_STREAM_PORT=8080
-    - OME_DASH_STREAM_PORT=8080
-    - OME_SIGNALLING_PORT=3333
-    - OME_TCP_RELAY_ADDRESS=*:3478
-    - OME_ICE_CANDIDATES=*:10006-10010/udp
     volumes:
       - ./ome:/opt/ovenmediaengine/bin/origin_conf
       - ./logs/ome:/var/log/ovenmediaengine
@@ -33,7 +19,6 @@ services:
     restart: unless-stopped
     ports:
     - "80:80/tcp"
-    - "443:443/tcp"
     volumes:
       - ./nginx/html:/usr/share/nginx/html
       - ./logs/nginx:/var/log/nginx
