@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skriaming</title>
+</head>
+
+<body>
+    <div class="player-wrapper">
+    	<div id="player"></div>
+    </div>
+	<script src="https://cdn.jsdelivr.net/npm/ovenplayer/dist/ovenplayer.js"></script>
+    <script>
+        player = OvenPlayer.create("player", {
+            sources: [
+                {
+                    "file": "ws://"+window.location.hostname+":3333/"+window.location.pathname.split('/')[1]+"/"+window.location.pathname.split('/')[2]+"?transport=tcp",
+                    "label": "TCP",
+                    "type": "webrtc",
+                    "default": true
+                },
+                {
+                    "file": "ws://"+window.location.hostname+":3333/"+window.location.pathname.split('/')[1]+"/"+window.location.pathname.split('/')[2]+"?transport=udp",
+                    "label": "UDP",
+                    "type": "webrtc",
+                    "default": false
+                }
+            ],
+            "mute": true
+        });
+    </script>
+</body>
+
+</html>
+

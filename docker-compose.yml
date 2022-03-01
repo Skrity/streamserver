@@ -35,6 +35,8 @@ services:
     - "80:80/tcp"
     - "443:443/tcp"
     volumes:
-      - ./nginx:/usr/share/nginx/html
+      - ./nginx/html:/usr/share/nginx/html
       - ./logs/nginx:/var/log/nginx
+      - ./nginx/conf.d:/etc/nginx/conf.d
+
     
